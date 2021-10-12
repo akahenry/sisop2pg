@@ -16,4 +16,6 @@ WORKDIR /app/
 
 COPY ./ /app/
 
+EXPOSE 8080
+
 CMD mvn jetty:run

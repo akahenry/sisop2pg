@@ -16,4 +16,6 @@ COPY ./webservice/ /app/webservice/
 
 RUN javac -cp "jersey-bundle-1.19.jar" webservice/*.java
 
+EXPOSE 9000
+
 CMD java -cp ".:jersey-bundle-1.19.jar" webservice.Servidor 
