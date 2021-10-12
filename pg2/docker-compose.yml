@@ -1,0 +1,18 @@
+version: "3"
+services:
+  pg2-server:
+    image: pg2-server:latest
+    ports:
+      - "9000:9000"
+    networks:
+      - pg2
+
+  pg2-client:
+    image: pg2-client:latest
+    depends_on:
+      - "pg2-server"
+    networks:
+      - pg2
+
+networks:
+  pg2:

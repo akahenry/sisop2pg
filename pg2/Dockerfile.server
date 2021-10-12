@@ -1,0 +1,19 @@
+FROM ubuntu:18.04
+
+ENV JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
+
+RUN apt-get update
+
+RUN apt-get -y install openjdk-8-jdk-headless
+
+RUN apt install -y wget
+
+WORKDIR /app/
+
+RUN wget https://repo1.maven.org/maven2/com/sun/jersey/jersey-bundle/1.19/jersey-bundle-1.19.jar
+
+COPY ./webservice/ /app/webservice/
+
+RUN javac -cp "jersey-bundle-1.19.jar" webservice/*.java
+
+CMD java -cp ".:jersey-bundle-1.19.jar" webservice.Servidor 
